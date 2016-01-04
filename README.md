@@ -18,6 +18,8 @@ Bottom of Screen:
 -vim based game
 -timed game
 -navigate maze with vim commands
+-Load game with Lorem Ipsum text
+-Powerup items sitting around with progressively more powerful commands
 
 [2**] Think about Design for Game
 -Small game first
@@ -26,3 +28,11 @@ Bottom of Screen:
 
 Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 -Follow this progression for powers you can pick up
+
+==================== Learned ====================
+
+How to run locally, http://goo.gl/Ero6mP
+-Better way to run (host) locally with python, http://goo.gl/CrVg
+-Alternatives to hosting locally, http://goo.gl/KZ17S2
+
+How to change sprites size, http://goo.gl/UrKirI
