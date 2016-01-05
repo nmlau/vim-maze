@@ -29,10 +29,20 @@ Bottom of Screen:
 Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 -Follow this progression for powers you can pick up
 
+==================== Todo ====================
+
+[1] Add second level
+[1] Json Map generator, make third level
+[1] Checkdirections for collision with walls
+
+[1] Add timer
+
 ==================== Learned ====================
 
 How to run locally, http://goo.gl/Ero6mP
 -Better way to run (host) locally with python, http://goo.gl/CrVg
 -Alternatives to hosting locally, http://goo.gl/KZ17S2
+-Chrome seems to cache maze.json so it's awkward to update
 
 How to change sprites size, http://goo.gl/UrKirI
+
