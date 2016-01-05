@@ -31,18 +31,31 @@ Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 
 ==================== Todo ====================
 
+Done:
 [1] Add second level
 [1] Json Map generator, make third level
 [1] Checkdirections for collision with walls
-
 [1] Add timer
+
+Todo:
+[1] Clean up timer text, change color
+[1] Finish game: Score and Alert
+[1] Host on octopress (mess around with cross origin loading)
+[1] Add to js blog post
+[2] Refactor (how do you split into modules, look through reintro)
 
 ==================== Learned ====================
 
 How to run locally, http://goo.gl/Ero6mP
 -Better way to run (host) locally with python, http://goo.gl/CrVg
 -Alternatives to hosting locally, http://goo.gl/KZ17S2
--Chrome seems to cache maze.json so it's awkward to update
+-Chrome seems to cache maze.json so it's awkward to update, clear applicable browsing data or use incognito
 
 How to change sprites size, http://goo.gl/UrKirI
 
+==================== Notes ====================
+
+-Overlap to finish level since collision only works when using velocity, http://phaser.io/docs/2.4.4/Phaser.Physics.Arcade.html#overlap
+-Tiled Map Editor, http://goo.gl/E28Imc
+-Json maps with raw data instead of base64 compression, http://goo.gl/vLzhPP
+-TileMap to get tile you're trying to move to then check its index to see if its a wall or not, https://goo.gl/I3h52i

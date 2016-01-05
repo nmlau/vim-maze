@@ -79,6 +79,12 @@ PhaserGame.Game.prototype = {
             this.target.anchor.set(0.5);
             this.physics.arcade.enable(this.target);
 
+            this.timer = 0;
+            this.totalTimer = 0;
+            this.timerText = this.game.add.text(15, 15, "Time: "+this.timer, this.fontBig);
+            this.totalTimeText = this.game.add.text(120, 30, "Total time: "+this.totalTimer, this.fontSmall);
+            this.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
+
             this.setKeys();
         },
 
@@ -177,10 +183,20 @@ PhaserGame.Game.prototype = {
                 this.target.anchor.set(0.5);
                 this.physics.arcade.enable(this.target);
 
+                this.totalTimer += this.timer;
+                this.timer = 0;
+                
+                this.timerText = this.game.add.text(15, 15, "Time: "+this.timer, this.fontBig);
+                this.totalTimeText = this.game.add.text(120, 30, "Total time: "+this.totalTimer, this.fontSmall);
+
                 this.nextLevel = false;
             }
         },
-
+        updateCounter: function() {
+            this.timer++;
+            this.timerText.setText("Time: "+this.timer);
+            this.totalTimeText.setText("Total time: "+(this.totalTimer+this.timer));
+        },
         update: function () {
             // this.physics.arcade.collide(this.car, this.layer);
             this.physics.arcade.overlap(this.car, this.target, this.finishLevel, null, this)
