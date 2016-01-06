@@ -27,6 +27,9 @@ PhaserGame.Game = function(game) {
         this.levelNum = 0;
         this.levels = ['Tile Layer 1', 'Tile Layer 2', 'Tile Layer 3'];
 
+        this.fontstyle = { font: "24px Arial", fill: "#ffffff" };
+
+
 };
 PhaserGame.Game.prototype = {
 
@@ -50,7 +53,7 @@ PhaserGame.Game.prototype = {
 
             this.load.tilemap('map', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
             this.load.image('tiles', 'assets/tiles.png');
-            this.load.image('car', 'assets/cloud9.png');
+            this.load.image('player', 'assets/cloud9.png');
             this.load.image('target', 'assets/car.png');
             
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
@@ -66,7 +69,7 @@ PhaserGame.Game.prototype = {
 
             this.map.setCollision(20, true, this.layer);
 
-            this.car = this.add.sprite(48, 48, 'car');
+            this.car = this.add.sprite(48, 48, 'player');
             this.car.width = 32;
             this.car.height = 32;
             this.car.anchor.set(0.5);
@@ -81,8 +84,8 @@ PhaserGame.Game.prototype = {
 
             this.timer = 0;
             this.totalTimer = 0;
-            this.timerText = this.game.add.text(15, 15, "Time: "+this.timer, this.fontBig);
-            this.totalTimeText = this.game.add.text(120, 30, "Total time: "+this.totalTimer, this.fontSmall);
+            this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.timer, this.fontstyle);
+            this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.totalTimer, this.fontstyle);
             this.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
 
             this.setKeys();
@@ -167,10 +170,17 @@ PhaserGame.Game.prototype = {
 
         changeLevel: function () {
             if (this.nextLevel) {
+
+                this.totalTimer += this.timer;
+                this.timer = 0;
+                if (this.levelNum > this.levels.length - 1) {
+                    alert("Congratulations, your score is: " + this.totalTimer)
+                }
+                this.world.removeAll();
                 this.layer = this.map.createLayer(this.levels[this.levelNum]);
                 this.map.setCollision(20, true, this.layer);
 
-                this.car = this.add.sprite(48, 48, 'car');
+                this.car = this.add.sprite(48, 48, 'player');
                 this.car.width = 32;
                 this.car.height = 32;
                 this.car.anchor.set(0.5);
@@ -183,11 +193,8 @@ PhaserGame.Game.prototype = {
                 this.target.anchor.set(0.5);
                 this.physics.arcade.enable(this.target);
 
-                this.totalTimer += this.timer;
-                this.timer = 0;
-                
-                this.timerText = this.game.add.text(15, 15, "Time: "+this.timer, this.fontBig);
-                this.totalTimeText = this.game.add.text(120, 30, "Total time: "+this.totalTimer, this.fontSmall);
+                this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.timer, this.fontstyle);
+                this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.totalTimer, this.fontstyle);
 
                 this.nextLevel = false;
             }
