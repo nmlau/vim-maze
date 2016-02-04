@@ -31,6 +31,16 @@ Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 
 ==================== Todo ====================
 
+Active:
+[2] Refactor (how do you split into modules, look through reintro)
+[2] Study how javascript works, how files work together, how states work
+
+Todo:
+[1] Put goals at better places
+[1] Remap keys
+[2] Load Text
+[1] Setup Items
+
 Done:
 [1] Add second level
 [1] Json Map generator, make third level
@@ -41,19 +51,21 @@ Done:
 [1] Clean up timer text, change color
 [0] Finish game: Score and Alert
 
-Todo:
-[2] Refactor (how do you split into modules, look through reintro)
-
 ==================== Learned ====================
 
 How to run locally, http://goo.gl/Ero6mP
 -Better way to run (host) locally with python, http://goo.gl/CrVg
 -Alternatives to hosting locally, http://goo.gl/KZ17S2
 -Chrome seems to cache maze.json so it's awkward to update, clear applicable browsing data or use incognito
+-Apparently hosting images locally on octopress/heroku server doesn't need jsfiddle cross origin loading either...
 
 How to change sprites size, http://goo.gl/UrKirI
 
 Putting a repo to be hosted on octopress is problematic, it will see it as a submodule which does work for things like themes
+
+Debugging Javascript, http://goo.gl/QFm9dJ
+-Debugger;
+-Chrome Developer Console
 
 ==================== Notes ====================
 
@@ -63,3 +75,9 @@ Putting a repo to be hosted on octopress is problematic, it will see it as a sub
 -TileMap to get tile you're trying to move to then check its index to see if its a wall or not, https://goo.gl/I3h52i
 -Changing text color with style object, http://phaser.io/examples/v2/text/colored-characters
 -game.world.removeAll() in between levels, http://goo.gl/2wyE7Z
+-Phaser docs: http://phaser.io/docs/2.4.4/index
+-Tutorial on grid: http://phaser.io/tutorials/coding-tips-005
+
+==================== Brick Walls ====================
+
+Putting a repo to be hosted on octopress is problematic, it will see it as a submodule which does work for things like themes

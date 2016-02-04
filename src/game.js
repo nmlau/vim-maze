@@ -1,19 +1,20 @@
-var PhaserGame = {
-        _WIDTH: 320,
-        _HEIGHT: 480
-};
+// var PhaserGame = {
+//         _WIDTH: 320,
+//         _HEIGHT: 480
+// };
 
 PhaserGame.Game = function(game) {
         this.map = null;
         this.layer = null;
         this.car = null;
 
+        this.hero = new Hero(game);
+
         this.safetile = 1;
         this.gridsize = 32;
-
-        // this.speed = 150;
         this.speed = 32;
 
+        //this needs to be cleaned up
         this.downKey;
         this.downKeyPressed = false;
         this.upKey;
@@ -28,9 +29,8 @@ PhaserGame.Game = function(game) {
         this.levels = ['Tile Layer 1', 'Tile Layer 2', 'Tile Layer 3'];
 
         this.fontstyle = { font: "24px Arial", fill: "#ffffff" };
-
-
 };
+
 PhaserGame.Game.prototype = {
 
         init: function () {
@@ -46,16 +46,10 @@ PhaserGame.Game.prototype = {
 
         preload: function () {
 
-            //  We need this because the assets are on Amazon S3
-            //  Remove the next 2 lines if running locally
-            // this.load.baseURL = 'http://files.phaser.io.s3.amazonaws.com/codingtips/issue005/';
-            // this.load.crossOrigin = 'anonymous';
-
             this.load.tilemap('map', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
             this.load.image('tiles', 'assets/tiles.png');
             this.load.image('player', 'assets/cloud9.png');
             this.load.image('target', 'assets/car.png');
-            
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
         },
 
@@ -88,7 +82,7 @@ PhaserGame.Game.prototype = {
             this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.totalTimer, this.fontstyle);
             this.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
 
-            this.setKeys();
+            this.createKeys();
         },
 
         pressDownKey: function () {
@@ -112,7 +106,7 @@ PhaserGame.Game.prototype = {
             this.levelNum++;
         },
 
-        setKeys: function() {
+        createKeys: function() {
             downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
             downKey.onDown.add(this.pressDownKey, this);
 
@@ -199,6 +193,7 @@ PhaserGame.Game.prototype = {
                 this.nextLevel = false;
             }
         },
+        //resetLevel: function() {}
         updateCounter: function() {
             this.timer++;
             this.timerText.setText("Time: "+this.timer);
@@ -210,5 +205,7 @@ PhaserGame.Game.prototype = {
             this.input.enabled = true;
             this.checkKeys();
             this.changeLevel();
+            // this.hero.update();
         }
 };
+
