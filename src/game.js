@@ -8,7 +8,7 @@ PhaserGame.Game = function(game) {
         this.layer = null;
         this.car = null;
 
-        this.hero = new Hero(game);
+        this.counter = new Counter(game);
 
         this.safetile = 1;
         this.gridsize = 32;
@@ -76,13 +76,11 @@ PhaserGame.Game.prototype = {
             this.target.anchor.set(0.5);
             this.physics.arcade.enable(this.target);
 
-            this.timer = 0;
-            this.totalTimer = 0;
-            this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.timer, this.fontstyle);
-            this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.totalTimer, this.fontstyle);
-            this.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
+            this.counter.create();
+            this.time.events.loop(Phaser.Timer.SECOND, this.counter.update, this.counter);
 
             this.createKeys();
+
         },
 
         pressDownKey: function () {
@@ -165,10 +163,10 @@ PhaserGame.Game.prototype = {
         changeLevel: function () {
             if (this.nextLevel) {
 
-                this.totalTimer += this.timer;
-                this.timer = 0;
+                // this.counter.totalTime += this.counter.time;
+                // this.counter.time = 0;
                 if (this.levelNum > this.levels.length - 1) {
-                    alert("Congratulations, your score is: " + this.totalTimer)
+                    alert("Congratulations, your score is: " + this.counter.totalTime)
                 }
                 this.world.removeAll();
                 this.layer = this.map.createLayer(this.levels[this.levelNum]);
@@ -187,8 +185,8 @@ PhaserGame.Game.prototype = {
                 this.target.anchor.set(0.5);
                 this.physics.arcade.enable(this.target);
 
-                this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.timer, this.fontstyle);
-                this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.totalTimer, this.fontstyle);
+                // this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.counter.time, this.fontstyle);
+                // this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.counter.totalTime, this.fontstyle);
 
                 this.nextLevel = false;
             }
@@ -205,7 +203,6 @@ PhaserGame.Game.prototype = {
             this.input.enabled = true;
             this.checkKeys();
             this.changeLevel();
-            // this.hero.update();
         }
 };
 

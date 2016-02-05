@@ -1,6 +1,6 @@
 var PhaserGame = {
-        _WIDTH: 320,
-        _HEIGHT: 480
+  _WIDTH: 320,
+  _HEIGHT: 480
 };
 
 PhaserGame.Boot = function(game) {};
