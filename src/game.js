@@ -163,39 +163,38 @@ PhaserGame.Game.prototype = {
         changeLevel: function () {
             if (this.nextLevel) {
 
-                // this.counter.totalTime += this.counter.time;
-                // this.counter.time = 0;
+                this.counter.totalTime += this.counter.time;
+                this.counter.time = 0;
+
                 if (this.levelNum > this.levels.length - 1) {
-                    alert("Congratulations, your score is: " + this.counter.totalTime)
+                    alert("Congratulations, your score is: " + this.counter.totalTime);
+                    this.levelNum = 0;
+                    this.counter.reset();
                 }
-                this.world.removeAll();
-                this.layer = this.map.createLayer(this.levels[this.levelNum]);
-                this.map.setCollision(20, true, this.layer);
-
-                this.car = this.add.sprite(48, 48, 'player');
-                this.car.width = 32;
-                this.car.height = 32;
-                this.car.anchor.set(0.5);
-                this.physics.arcade.enable(this.car);
-
-                // this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
-                this.target = this.add.sprite(48, 48 * 5, 'target');
-                this.target.width = 32;
-                this.target.height = 32;
-                this.target.anchor.set(0.5);
-                this.physics.arcade.enable(this.target);
-
-                // this.timerText = this.game.add.text((this.gridsize * 20) - 150, 30, "Time: "+this.counter.time, this.fontstyle);
-                // this.totalTimeText = this.game.add.text((this.gridsize * 20) - 150, 60, "Total time: "+this.counter.totalTime, this.fontstyle);
-
-                this.nextLevel = false;
+                this.resetWorld();
             }
         },
-        //resetLevel: function() {}
-        updateCounter: function() {
-            this.timer++;
-            this.timerText.setText("Time: "+this.timer);
-            this.totalTimeText.setText("Total time: "+(this.totalTimer+this.timer));
+        resetWorld: function() {
+            this.world.removeAll();
+            this.layer = this.map.createLayer(this.levels[this.levelNum]);
+            this.map.setCollision(20, true, this.layer);
+
+            this.car = this.add.sprite(48, 48, 'player');
+            this.car.width = 32;
+            this.car.height = 32;
+            this.car.anchor.set(0.5);
+            this.physics.arcade.enable(this.car);
+
+            // this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
+            this.target = this.add.sprite(48, 48 * 5, 'target');
+            this.target.width = 32;
+            this.target.height = 32;
+            this.target.anchor.set(0.5);
+            this.physics.arcade.enable(this.target);
+
+            this.counter.create();
+
+            this.nextLevel = false;
         },
         update: function () {
             // this.physics.arcade.collide(this.car, this.layer);
