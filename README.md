@@ -33,7 +33,6 @@ Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 
 Active:
 [2] Refactor (how do you split into modules, look through reintro)
-[2] Study how javascript works, how files work together, how states work
 
 Todo:
 [1] Put goals at better places
@@ -42,6 +41,8 @@ Todo:
 [1] Setup Items
 
 Done:
+[2] Fix level changing
+[4] Study how javascript works, how files work together, how states work
 [1] Add second level
 [1] Json Map generator, make third level
 [1] Checkdirections for collision with walls
@@ -78,6 +79,17 @@ Debugging Javascript, http://goo.gl/QFm9dJ
 -Phaser docs: http://phaser.io/docs/2.4.4/index
 -Tutorial on grid: http://phaser.io/tutorials/coding-tips-005
 
+[1] Phaser OOP
+-Searching 'phaser organize code into classes' finally got some good results
+-When testing with alert(), don't hit prevent additonal dialogues and forget
+-(What I followed) Multifile game example from forums, http://goo.gl/07D2m7
+-Discussion of code organization, how Phaser is flexible, and how games final form should be one single minified js file (script tags), http://goo.gl/8iWPjQ
+-Pass in method not method() or else it will just execute the line, http://goo.gl/FNJfc3
+-Phaser.js better than min.js for debugging since I can actually read the source
+
 ==================== Brick Walls ====================
 
-Putting a repo to be hosted on octopress is problematic, it will see it as a submodule which does work for things like themes
+Figuring out how to do OOP with Phaser
+-There's no import manager like most other frameworks
+
+Learning to pass around 'this' properly

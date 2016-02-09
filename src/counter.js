@@ -10,8 +10,6 @@ Counter.prototype.create = function() {
   this.time = 0;
   this.game.timerText = this.game.add.text((32 * 20) - 150, 30, "Time: "+this.time, this.fontstyle);
   this.game.totalTimeText = this.game.add.text((32 * 20) - 150, 60, "Total time: "+this.totalTime, this.fontstyle);
-  // this.game.timerText = this.game.add.text((32 * 20) - 450, 30, "Time: "+this.time, this.fontstyle);
-  // this.game.totalTimeText = this.game.add.text((32 * 20) - 450, 60, "Total time: "+this.totalTime, this.fontstyle);
 ;}
 
 Counter.prototype.update = function() {  

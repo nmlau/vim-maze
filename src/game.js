@@ -45,11 +45,10 @@ PhaserGame.Game.prototype = {
         },
 
         preload: function () {
-
             this.load.tilemap('map', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
             this.load.image('tiles', 'assets/tiles.png');
             this.load.image('player', 'assets/cloud9.png');
-            this.load.image('target', 'assets/car.png');
+            this.load.image('target', 'assets/treasure.png');
             //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
         },
 
@@ -69,8 +68,8 @@ PhaserGame.Game.prototype = {
             this.car.anchor.set(0.5);
             this.physics.arcade.enable(this.car);
 
-            // this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
-            this.target = this.add.sprite(48, 48 * 5, 'target');
+            this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
+            // this.target = this.add.sprite(48, 48 * 5, 'target');
             this.target.width = 32;
             this.target.height = 32;
             this.target.anchor.set(0.5);
@@ -185,8 +184,8 @@ PhaserGame.Game.prototype = {
             this.car.anchor.set(0.5);
             this.physics.arcade.enable(this.car);
 
-            // this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
-            this.target = this.add.sprite(48, 48 * 5, 'target');
+            this.target = this.add.sprite((this.gridsize * 20) - 48, (this.gridsize * 15) - 48, 'target');
+            // this.target = this.add.sprite(48, 48 * 5, 'target');
             this.target.width = 32;
             this.target.height = 32;
             this.target.anchor.set(0.5);
