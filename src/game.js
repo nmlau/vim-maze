@@ -1,8 +1,3 @@
-// var PhaserGame = {
-//         _WIDTH: 320,
-//         _HEIGHT: 480
-// };
-
 PhaserGame.Game = function(game) {
         this.map = null;
         this.layer = null;

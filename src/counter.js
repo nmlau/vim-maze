@@ -6,8 +6,8 @@ function Counter(game) {
 }
 
 Counter.prototype.create = function() {
-  this.totalTime += this.time;
   this.time = 0;
+  this.totalTime += this.time;
   this.game.timerText = this.game.add.text((32 * 20) - 150, 30, "Time: "+this.time, this.fontstyle);
   this.game.totalTimeText = this.game.add.text((32 * 20) - 150, 60, "Total time: "+this.totalTime, this.fontstyle);
 ;}
