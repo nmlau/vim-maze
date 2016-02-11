@@ -7,17 +7,11 @@ PhaserGame.Game = function(game) {
 
         this.safetile = 1;
         this.gridsize = 32;
-        this.speed = 32;
 
-        //this needs to be cleaned up
         this.downKey;
-        this.downKeyPressed = false;
         this.upKey;
-        this.upKeyPressed = false;
         this.leftKey;
-        this.leftKeyPressed = false;
         this.rightKey;
-        this.rightKeyPressed = false;
 
         this.nextLevel = false;
         this.levelNum = 0;
@@ -77,20 +71,36 @@ PhaserGame.Game.prototype = {
 
         },
 
+        validateMovement: function(x,y) {
+            tile = this.map.getTileWorldXY(x, y, 32, 32, this.layer)
+            if (tile.index == 1) {
+                this.car.x = x;
+                this.car.y = y;
+            }
+        },
+
         pressDownKey: function () {
-            this.downKeyPressed = true;
+            x = this.car.x;
+            y = this.car.y + 32;
+            this.validateMovement(x,y)
         },
 
         pressUpKey: function () {
-            this.upKeyPressed = true;
+            x = this.car.x;
+            y = this.car.y - 32;
+            this.validateMovement(x,y)
         },
 
         pressLeftKey: function () {
-            this.leftKeyPressed = true;
+            x = this.car.x-32;
+            y = this.car.y;
+            this.validateMovement(x,y)
         },
 
         pressRightKey: function () {
-            this.rightKeyPressed = true;
+            x = this.car.x+32;
+            y = this.car.y;
+            this.validateMovement(x,y)
         },
 
         finishLevel: function () {
@@ -99,6 +109,7 @@ PhaserGame.Game.prototype = {
         },
 
         createKeys: function() {
+            debugger;
             downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
             downKey.onDown.add(this.pressDownKey, this);
 
@@ -115,43 +126,6 @@ PhaserGame.Game.prototype = {
             // this.input.keyboard.removeKeyCapture(Phaser.Keyboard.UP);
             // this.input.keyboard.removeKeyCapture(Phaser.Keyboard.LEFT);
             // this.input.keyboard.removeKeyCapture(Phaser.Keyboard.RIGHT);
-        },
-
-        checkKeys: function () {
-            // if (this.downKeyPressed) {
-            //     // debugger;
-            //     x = this.car.x;
-            //     y = this.car.y + 32;
-            //     // this.map.getTileBelow(this.layer, x, y);
-            //     tile = this.map.getTileWorldXY(x, y, 32, 32, this.layer)
-            //     if (tile.index == 1) {
-            //         this.car.y+=32;
-            //     }
-            //     this.downKeyPressed = false    
-            // }
-            x = this.car.x;
-            y = this.car.y;
-            if (this.downKeyPressed) {
-                y+=32;
-                this.downKeyPressed = false    
-            }
-            else if (this.upKeyPressed) {
-                y-=32;
-                this.upKeyPressed = false
-            }
-            else if (this.leftKeyPressed) {
-                x-=32
-                this.leftKeyPressed = false
-            }
-            else if (this.rightKeyPressed) {
-                x+=32;
-                this.rightKeyPressed = false
-            }
-            tile = this.map.getTileWorldXY(x, y, 32, 32, this.layer)
-            if (tile.index == 1) {
-                this.car.x = x;
-                this.car.y = y;
-            }
         },
 
         changeLevel: function () {
@@ -194,7 +168,6 @@ PhaserGame.Game.prototype = {
             // this.physics.arcade.collide(this.car, this.layer);
             this.physics.arcade.overlap(this.car, this.target, this.finishLevel, null, this)
             this.input.enabled = true;
-            this.checkKeys();
             this.changeLevel();
         }
 };
