@@ -5,19 +5,20 @@
     <meta charset="utf-8">
     <!-- <script src="js/phaser-arcade-physics.2.2.2.min.js"></script> -->
     <script src="js/phaser.js"></script>
-    <script src="src/counter.js"></script>
-    <script src="src/boot.js"></script>
-    <script src="src/game.js"></script>
+    <script src="src/modules/counter.js"></script>
+    <script src="src/Boot.js"></script>
+    <script src="src/Menu.js"></script>
+    <script src="src/Game.js"></script>
 </head>
 <body>
     <div id="game"></div>
     <script type="text/javascript">
     (function() {
         var game = new Phaser.Game(640, 480, Phaser.CANVAS, 'game');
-        // game.state.add('Woah', PhaserGame.Woah);
         game.state.add('Boot', PhaserGame.Boot);
+        game.state.add('Menu', PhaserGame.Menu);
         game.state.add('Game', PhaserGame.Game);
-        game.state.start('Boot')
+        game.state.start('Boot');
     })();
     </script>
 

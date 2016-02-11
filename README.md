@@ -32,15 +32,18 @@ Vim Cheatsheets with nice progression, http://goo.gl/4MgL
 ==================== Todo ====================
 
 Active:
-[2] Refactor (how do you split into modules, look through reintro)
+[1] Setup proper boot, load, etc
 
 Todo:
-[1] Put goals at better places
+[1] Get rid of magic numbers
 [1] Remap keys
 [2] Load Text
 [1] Setup Items
 
 Done:
+[1] Put goals at better places
+[1] Design movement (with better understanding of this)
+[4] Refactor (how do you split into modules, look through reintro)
 [2] Fix level changing
 [4] Study how javascript works, how files work together, how states work
 [1] Add second level

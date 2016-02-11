@@ -22,25 +22,6 @@ PhaserGame.Game = function(game) {
 
 PhaserGame.Game.prototype = {
 
-        init: function () {
-
-            // this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.scale.pageAlignHorizontally = true;
-            this.scale.pageAlignVertically = true;
-
-            Phaser.Canvas.setImageRenderingCrisp(this.game.canvas);
-            
-            this.physics.startSystem(Phaser.Physics.ARCADE);
-        },
-
-        preload: function () {
-            this.load.tilemap('map', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
-            this.load.image('tiles', 'assets/tiles.png');
-            this.load.image('player', 'assets/cloud9.png');
-            this.load.image('target', 'assets/treasure.png');
-            //  Note: Graphics are Copyright 2015 Photon Storm Ltd.
-        },
-
         create: function () {
 
             this.map = this.add.tilemap('map');
@@ -109,7 +90,6 @@ PhaserGame.Game.prototype = {
         },
 
         createKeys: function() {
-            debugger;
             downKey = this.input.keyboard.addKey(Phaser.Keyboard.DOWN);
             downKey.onDown.add(this.pressDownKey, this);
 
